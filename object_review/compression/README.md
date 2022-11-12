@@ -8,4 +8,4 @@
 
 ### Тесты
 
-Сжатие на [отзывах wildberries](wildberries_with_predict.csv)
+Сжатие на [отзывах wildberries](wildberries_comment_objects_example_test.csv)
