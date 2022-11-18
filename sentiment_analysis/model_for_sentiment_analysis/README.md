@@ -24,5 +24,4 @@ RuBERT (русский, корпусный, 12-слойный, 768- размер
 - pooler_num_fc_layers: 3,
 - pooler_size_per_head: 128,
 - pooler_type: first_token_transform,
-- type_vocab_size: 2,
-- num_of_output_layers: 3
+- type_vocab_size: 2
