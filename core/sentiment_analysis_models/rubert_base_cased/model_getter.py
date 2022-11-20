@@ -16,8 +16,8 @@ def save_tokenizer(tokenizer, path):
     
     
 def main():
-    save_model(get_model(), 'core/sentiment_analysis_models/model_test/model_data/model')
-    save_tokenizer(get_tokenizer(), 'core/sentiment_analysis_models/model_test/model_data/tokenizer')
+    save_model(get_model(), 'core/sentiment_analysis_models/rubert_base_cased/model_data/model')
+    save_tokenizer(get_tokenizer(), 'core/sentiment_analysis_models/rubert_base_cased/model_data/tokenizer')
 
 
 main()
