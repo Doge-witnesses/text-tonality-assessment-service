@@ -1,4 +1,4 @@
-from .rubert_base_cased import model as rubert
+from sentiment_analysis_models.rubert_base_cased import model as rubert
 
 
 def predict(text, predictor = rubert.rubert_base_cased):
