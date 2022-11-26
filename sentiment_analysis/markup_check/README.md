@@ -31,6 +31,7 @@ hotel, women, reviews, phone
 бинарная
 Примерная длина документов (словами): 35
 Результаты:
+
 ![hotel](https://user-images.githubusercontent.com/72318993/204066957-0e937c0f-702c-4df4-838b-11fc2fec1574.jpg)
 
 
@@ -41,6 +42,7 @@ hotel, women, reviews, phone
 балльная оценка
 Примерная длина документов (словами): 100
 Результаты:
+
 ![phone](https://user-images.githubusercontent.com/72318993/204066978-606ffd96-2c15-4c9a-9b2f-4495f0cf46a4.jpg)
 
 
@@ -51,7 +53,9 @@ hotel, women, reviews, phone
 разметка с оценкой
 Примерная длина документов (словами): 20
 Результаты:
+
 ![women](https://user-images.githubusercontent.com/72318993/204066971-9acad1a8-a6e8-4217-bdfc-b146c0055168.jpg)
 
-reviews:
+!!! reviews:
+
 ![reviews](https://user-images.githubusercontent.com/72318993/204066991-fc6ef3c7-84bd-4512-b414-9c0d926b2de1.jpg)
