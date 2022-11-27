@@ -1,4 +1,4 @@
-def fix_command(text, words):
+def fix_command(text : str, words : list):
     import numpy as np
     array = np.array(words)
 
@@ -11,7 +11,7 @@ def fix_command(text, words):
 
     return command
  
-def text_ru_clear(text : str) -> str:
+def text_ru_clear(text : str, words : list) -> list:
   for letter in text:
     x = ord(letter)
     if (x >= 1072 and x <= 1103) or (x >= 1040 and x <= 1071) or x == 1105 or x == 1025 or x == 32:
@@ -29,6 +29,6 @@ def text_ru_clear(text : str) -> str:
     text.pop(len(text)-1)
     
   for i in range(len(text)):
-    text[i] = fix_command(text[i], dictionary)
+    text[i] = fix_command(text[i], words)
     
   return text 
