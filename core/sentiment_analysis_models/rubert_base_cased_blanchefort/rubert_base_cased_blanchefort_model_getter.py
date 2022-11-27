@@ -2,10 +2,10 @@ from transformers import AutoModelForSequenceClassification
 from transformers import BertTokenizerFast
 
 
-def get_model():
+def get_rubert_base_cased_model():
     return AutoModelForSequenceClassification.from_pretrained('blanchefort/rubert-base-cased-sentiment', return_dict=True)
     
-def get_tokenizer():
+def get_rubert_base_cased_tokenizer():
     return BertTokenizerFast.from_pretrained('blanchefort/rubert-base-cased-sentiment')
 
 def save_model(model, path):
@@ -15,10 +15,9 @@ def save_tokenizer(tokenizer, path):
     tokenizer.save_pretrained(path)
     
     
-def main():
-    save_model(get_model(), 'core/sentiment_analysis_models/rubert_base_cased/model_data/model')
-    save_tokenizer(get_tokenizer(), 'core/sentiment_analysis_models/rubert_base_cased/model_data/tokenizer')
+def get_rubert_base_cased_blanchefort():
+    
+    save_model(get_rubert_base_cased_model(), 'core/sentiment_analysis_models/rubert_base_cased_blanchefort/model_data/model')
+    save_tokenizer(get_rubert_base_cased_tokenizer(), 'core/sentiment_analysis_models/rubert_base_cased_blanchefort/model_data/tokenizer')
 
-
-main()
  

@@ -1,8 +1,18 @@
-from object_review_models import get_all_models as ORM_getter
-from sentiment_analysis_models import get_all_models as SAM_getter
+if __name__ == '__main__':
 
-def main():
-    ORM_getter.main()
-    SAM_getter.main()
+    from object_review_models.get_object_review_models import get_all_object_review_models
+    from sentiment_analysis_models.get_sentiment_models import get_all_sentiment_models
+
+else:
     
-main()
+    from .object_review_models.get_object_review_models import get_all_object_review_models
+    from .sentiment_analysis_models.get_sentiment_models import get_all_sentiment_models
+    
+def get_all_models():
+    
+    get_all_object_review_models()
+    get_all_sentiment_models()
+    
+    
+if __name__ == '__main__':
+    get_all_models()

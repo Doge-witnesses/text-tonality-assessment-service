@@ -6,13 +6,14 @@ from pytorch_pretrained_bert import BertTokenizer, BertForMaskedLM
 
 class Bert_punctuation(object):
     def __init__(self):
-        self.model_file = "bert_punctuation.tar.gz"
-        self.vocab_file = "vocab.txt"
+        self.model_file = "core/preprocessing/logical_parts/Bert_Russian_punctuation/bert_punctuation.tar.gz"
+        self.vocab_file = "core/preprocessing/logical_parts/Bert_Russian_punctuation/vocab.txt"
         self.model = self.bert_model()
         self.tokenizer = self.bert_tokenizer()
 
     def bert_model(self):
-        model = BertForMaskedLM.from_pretrained(self.model_file).eval()
+        model = BertForMaskedLM.from_pretrained(self.model_file)
+        model.eval()
         return model
 
     def bert_tokenizer(self):
