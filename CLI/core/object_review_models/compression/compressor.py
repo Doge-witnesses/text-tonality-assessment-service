@@ -7,8 +7,8 @@ else:
     from .model_rubert_tiny2_sentence_compression.model_rubert_tiny2_sentence_compression import rubert_tiny2_compress
     
 
-def compress(text, num_words = 0, compressor = rubert_tiny2_compress):
-    # (str, function) -> str
+def compress(text: str, num_words: int = 0, compressor = rubert_tiny2_compress) -> str:
+
     if (num_words == 0):
         return compressor(text)
     

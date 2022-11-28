@@ -2,8 +2,8 @@ import torch
 from transformers import AutoModelForSequenceClassification
 from transformers import BertTokenizerFast
 
-tokenizer = BertTokenizerFast.from_pretrained('core/sentiment_analysis_models/rubert_base_cased_blanchefort/model_data/tokenizer')
-model = AutoModelForSequenceClassification.from_pretrained('core/sentiment_analysis_models/rubert_base_cased_blanchefort/model_data/model', return_dict=True)
+tokenizer = BertTokenizerFast.from_pretrained('CLI/core/sentiment_analysis_models/rubert_base_cased_blanchefort/model_data/tokenizer')
+model = AutoModelForSequenceClassification.from_pretrained('CLI/core/sentiment_analysis_models/rubert_base_cased_blanchefort/model_data/model', return_dict=True)
 
 
 def rubert_base_cased_blanchefort_predict(text):

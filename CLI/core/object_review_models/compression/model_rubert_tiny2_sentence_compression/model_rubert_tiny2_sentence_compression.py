@@ -1,10 +1,10 @@
 import torch
 from transformers import AutoModelForTokenClassification, AutoTokenizer
 
-rubert_tiny2_sentence_compression_model = AutoModelForTokenClassification.from_pretrained('core/object_review_models/compression/model_rubert_tiny2_sentence_compression/model_data/model')
-rubert_tiny2_sentence_compression_tokenizer = AutoTokenizer.from_pretrained('core/object_review_models/compression/model_rubert_tiny2_sentence_compression/model_data/tokenizer')
+rubert_tiny2_sentence_compression_model = AutoModelForTokenClassification.from_pretrained('CLI/core/object_review_models/compression/model_rubert_tiny2_sentence_compression/model_data/model')
+rubert_tiny2_sentence_compression_tokenizer = AutoTokenizer.from_pretrained('CLI/core/object_review_models/compression/model_rubert_tiny2_sentence_compression/model_data/tokenizer')
 
-def rubert_tiny2_compress(text, threshold=0.5, keep_ratio=None, all=False):
+def rubert_tiny2_compress(text, threshold=0.5, keep_ratio=None, all=False) -> str:
     """ Compress a sentence by removing the least important words.
     Parameters:
         threshold: cutoff for predicted probabilities of word removal
@@ -39,4 +39,5 @@ def rubert_tiny2_compress(text, threshold=0.5, keep_ratio=None, all=False):
         if keep:
             kept_toks.append(token)
         prev_word_id = word_id
+        
     return rubert_tiny2_sentence_compression_tokenizer.decode(kept_toks, skip_special_tokens=True)
