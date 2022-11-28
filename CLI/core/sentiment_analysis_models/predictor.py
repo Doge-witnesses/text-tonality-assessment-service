@@ -10,14 +10,11 @@ else:
     from .rubert_base_cased_blanchefort.rubert_base_cased_blanchefort_model import rubert_base_cased_blanchefort_predict
 
 
-def predict(text, predictor = rubert_base_cased_blanchefort_predict):
-    # (str, function) -> str
-    predict = int(predictor(text))
-    
-    
-    if (predict == 0):
-        return 'NEUTRAL'
-    elif (predict == 1):
-        return 'POSITIVE'
-    else:
-        return 'NEGATIVE'
+def predict(text: str, predictor = rubert_base_cased_predict) -> int:
+    """
+    [0] -   NEG;
+    [1] -   POS;
+    [2] -   NEG;
+    """
+
+    return int(predictor(text))

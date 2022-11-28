@@ -22,6 +22,6 @@ class LogicalParts:
 
 logicalParts = LogicalParts()
 
-def split_to_logical_parts(text):
+def split_to_logical_parts(text: str) -> list[str]:
     
     return logicalParts.transform(text)
