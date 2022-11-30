@@ -10,7 +10,7 @@ import click
 
 
 @click.command()
-@click.option('--preprocessing', '-PRE', type=int, default=0, show_default=True, help=
+@click.option('--preprocessing', '-PRE', type=int, default=2, show_default=True, help=
               """
               Preprocessing the source text.
               
@@ -41,11 +41,11 @@ def text_tonality(preprocessing, object_review_size, text):
         print('=' * 100)
         
     elif preprocessing == 2:
-        processed_texts = processing_functions.processing_logical_parts(text, object_review_size).unwrappe_to_list()
+        processed_logical_parts = processing_functions.processing_logical_parts(text, object_review_size).unwrappe_to_list()
 
-        for processed_text in processed_texts:
+        for part_id in range(len(processed_logical_parts)):
             print('=' * 100, '\n')
-            print(f'\tTEXT: \"{processed_text[0]}\"\n\tSENTIMENT: {processed_text[1]}\n\tOBJECT: {processed_text[2]}\n')
+            print(f'\tPART {part_id + 1}: \"{processed_logical_parts[part_id][0]}\"\n\tSENTIMENT: {processed_logical_parts[part_id][1]}\n\tOBJECT: {processed_logical_parts[part_id][2]}\n')
             print('=' * 100)
     
 if __name__ == '__main__':

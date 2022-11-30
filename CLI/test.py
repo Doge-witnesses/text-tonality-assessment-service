@@ -43,7 +43,7 @@ def text_tonality(preprocessing: _Preprocessing, text, object_review_size: int =
     
 if __name__ == '__main__':
     
-    text = 'Повязка пришла вовремя ,   но вся драная . Очень жаль.'
+    text = 'Обидно, что я живу в стране, где гантели стоят дороже, чем бутылка водки.'
     
     text_tonality(text=text, 
                   preprocessing=_Preprocessing.WITHOUT_PREPROCESSING)
