@@ -1,19 +1,19 @@
 if __name__ == '__main__':
     
     from logical_parts.split_to_logical_parts import split_to_logical_parts
-    from formatting.punctuation import drop_space_and_punctuation
+    from text_clear import text_clear
     
 else:
     
     from .logical_parts.split_to_logical_parts import split_to_logical_parts
-    from .formatting.punctuation import drop_space_and_punctuation
+    from .text_clear import text_clear
     
 def preprocessing(text: str) -> list[str]:
     """
-    drop_space_and_punctuation, split_to_logical_parts
+        Drop space and punctuation, split to logical parts
     """
     
-    text = drop_space_and_punctuation(text)
+    text = text_clear(text)
     
     text = split_to_logical_parts(text)
     
