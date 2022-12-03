@@ -7,6 +7,7 @@ __pycache__/
 *vocab.txt
 *.tar.gz
 *.pth
+*.csv
 
 # C extensions
 *.so

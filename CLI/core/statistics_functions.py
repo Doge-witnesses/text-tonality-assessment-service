@@ -1,76 +1,101 @@
 if __name__ == '__main__':
     
-    from object_review_models.compression.compressor import compress
-    from sentiment_analysis_models.predictor import predict
-    from preprocessing.preprocessing import preprocessing
-    from preprocessing.formatting.punctuation import drop_space_and_punctuation
-    from processing_functions import _Processed_text
-    from processing_functions import Sentiment
-    from processing_functions import _Dataset_processed_texts
+    import commons
+    from preprocessing.morphological_analysis import text_normalization
+    from preprocessing.text_clear import text_clear
 
 else:
     
-    from .object_review_models.compression.compressor import compress
-    from .sentiment_analysis_models.predictor import predict
-    from .preprocessing.preprocessing import preprocessing
-    from .preprocessing.formatting.punctuation import drop_space_and_punctuation
-    from .processing_functions import _Processed_text
-    from .processing_functions import Sentiment
-    from .processing_functions import _Dataset_processed_texts
+    from . import commons
+    from .preprocessing.morphological_analysis import text_normalization
+    from .preprocessing.text_clear import text_clear
 
 import pandas as pd
-    
 
-def get_pos_processed_texts(dataset: _Dataset_processed_texts) -> _Dataset_processed_texts:
+
+def get_processed_texts(path: str) -> commons._Dataset_processed_texts:
+    """
+        Getting a processed dataset from .csv file
+        
+        [path] ---- path to the dataset
+    """
+    
+    df = pd.read_csv(path, lineterminator='\n').values.tolist()
+    
+    row_processed_texts = []
+    
+    for processed_texts in df:
+        
+        text = processed_texts[1]
+        sentiment = None
+        
+        if processed_texts[2] == 'NEGATIVE':
+            sentiment = commons.Sentiment.NEGATIVE
+        elif processed_texts[2] == 'NEUTRAL':
+            sentiment = commons.Sentiment.NEUTRAL
+        elif processed_texts[2] == 'POSITIVE':
+            sentiment = commons.Sentiment.POSITIVE
+        
+        object_review = text_clear(processed_texts[3]).split()
+        
+        if (text == None or sentiment == None or object_review == None):
+            continue
+        
+        row_processed_texts.append(commons._Processed_text(text, sentiment, object_review))
+        
+    return commons._Dataset_processed_texts(row_processed_texts)
+
+
+def get_pos_processed_texts(dataset: commons._Dataset_processed_texts) -> commons._Dataset_processed_texts:
     """
         Extracting POSITIVE texts from a dataset
     """
 
-    res = list[_Processed_text]
+    res = []
     
-    for processed_text in dataset.dataset_processed_texts:
-        if processed_text.sentiment == Sentiment.POSITIVE:
+    for processed_text in dataset.processed_texts:
+        if processed_text.sentiment == commons.Sentiment.POSITIVE:
             res.append(processed_text)
             
-    return res
+    return commons._Dataset_processed_texts(res)
 
 
-def get_neg_processed_texts(dataset: _Dataset_processed_texts) -> _Dataset_processed_texts:
+def get_neg_processed_texts(dataset: commons._Dataset_processed_texts) -> commons._Dataset_processed_texts:
     """
         Extracting NEGATIVE texts from a dataset
     """
 
-    res = list[_Processed_text]
+    res = []
     
-    for processed_text in dataset.dataset_processed_texts:
-        if processed_text.sentiment == Sentiment.NEGATIVE:
+    for processed_text in dataset.processed_texts:
+        if processed_text.sentiment == commons.Sentiment.NEGATIVE:
             res.append(processed_text)
             
-    return res
+    return commons._Dataset_processed_texts(res)
 
 
-def get_neu_processed_texts(dataset: _Dataset_processed_texts) -> _Dataset_processed_texts:
+def get_neu_processed_texts(dataset: commons._Dataset_processed_texts) -> commons._Dataset_processed_texts:
     """
         Extracting NEUTRAL texts from a dataset
     """
 
-    res = list[_Processed_text]
+    res = []
     
-    for processed_text in dataset.dataset_processed_texts:
-        if processed_text.sentiment == Sentiment.NEUTRAL:
+    for processed_text in dataset.processed_texts:
+        if processed_text.sentiment == commons.Sentiment.NEUTRAL:
             res.append(processed_text)
             
-    return res
+    return commons._Dataset_processed_texts(res)
 
 
-def frequency_words(words: list[str]) -> list[tuple[str, int]]:
+def frequency_str(words: list[str]) -> list[tuple[str, int]]:
     """
         Computing frequency of words in a list
         
         [words] ---- list of words
     """
     
-    frequency = dict[str, int]
+    frequency = {}
     
     for word in words:
         
@@ -82,3 +107,43 @@ def frequency_words(words: list[str]) -> list[tuple[str, int]]:
     frequency = sorted(frequency.items(), key=lambda x: x[1], reverse=True)
         
     return frequency
+
+
+def get_ngram(dataset_processed_texts: commons._Dataset_processed_texts, n: int = 1) -> list[str]:
+    """
+       Getting n_grams from a processed dataset of texts 
+    """
+    
+    res = []
+    
+    for processed_text in dataset_processed_texts.processed_texts:
+        for i in range(len(processed_text.object_review) - n + 1):
+            res.append(' '.join(processed_text.object_review[i:i + n]))
+            
+    return res
+
+
+def get_norm_ngram(dataset_processed_texts: commons._Dataset_processed_texts, n: int = 1) -> tuple[list[str], dict[str, str]]:
+    """
+       Getting n_grams from a processed dataset of texts
+    """
+    
+    res = []
+    dictionary = {}
+    
+    for processed_text in dataset_processed_texts.processed_texts:
+        for i in range(len(processed_text.object_review) - n + 1):
+            string = ' '.join(processed_text.object_review[i:i + n])
+            res.append(text_normalization(string))
+            dictionary[res[-1]] = string
+            
+    return res, dictionary
+
+def save_frequency_str(frequency_str : list[tuple[str, int]], save_path: str) -> None:
+    """
+        Save the frequency of words in .csv format
+    """
+    
+    df = pd.DataFrame(frequency_str, columns=['Words', 'Frequency'])
+    
+    df.to_csv(save_path)
