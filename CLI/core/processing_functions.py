@@ -140,3 +140,15 @@ def processing_logical_parts_dataset(input_path: str, size: int = 0, object_revi
         
     return commons._Dataset_processed_texts(res)
     
+
+def save_dataset(dataset: commons._Dataset_processed_texts, output_path: str) -> None:
+    """
+        Saving a dataset of processed texts
+        
+        [dataset]     ---- Processed texts
+        [output_path] ---- Save path
+    """
+    
+    df = pd.DataFrame(dataset.unwrappe(), columns=['Text', 'Sentiment', 'Object_review'])
+    
+    df.to_csv(output_path)

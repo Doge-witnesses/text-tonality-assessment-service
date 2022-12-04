@@ -9,7 +9,7 @@ else:
 import pandas as pd
 
 
-def make_statistics(input_path: str, 
+def frequency_ngrams(input_path: str, 
                     output_path: str,
                     sentiment: statistics_functions.commons.Sentiment, 
                     n: int = 1,
@@ -55,19 +55,20 @@ def make_statistics(input_path: str,
 
 if __name__ == '__main__':
     
-    make_statistics('data/formatted_text_res.csv', 'data/res/formatted_text_pos_2gram_norm.csv', statistics_functions.commons.Sentiment.POSITIVE, 2, True)
-    make_statistics('data/formatted_text_res.csv', 'data/res/formatted_text_pos_3gram_norm.csv', statistics_functions.commons.Sentiment.POSITIVE, 3, True)
-    make_statistics('data/formatted_text_res.csv', 'data/res/formatted_text_neg_2gram_norm.csv', statistics_functions.commons.Sentiment.NEGATIVE, 2, True)
-    make_statistics('data/formatted_text_res.csv', 'data/res/formatted_text_neg_3gram_norm.csv', statistics_functions.commons.Sentiment.NEGATIVE, 3, True)
-    make_statistics('data/formatted_text_res.csv', 'data/res/formatted_text_neu_2gram_norm.csv', statistics_functions.commons.Sentiment.NEUTRAL, 2, True)
-    make_statistics('data/formatted_text_res.csv', 'data/res/formatted_text_neu_3gram_norm.csv', statistics_functions.commons.Sentiment.NEUTRAL, 3, True)
+    # frequency_ngrams('data/formatted_text_res.csv', 'data/res/formatted_text_pos_2gram_norm.csv', statistics_functions.commons.Sentiment.POSITIVE, 2, True)
+    # frequency_ngrams('data/formatted_text_res.csv', 'data/res/formatted_text_pos_3gram_norm.csv', statistics_functions.commons.Sentiment.POSITIVE, 3, True)
+    # frequency_ngrams('data/formatted_text_res.csv', 'data/res/formatted_text_neg_2gram_norm.csv', statistics_functions.commons.Sentiment.NEGATIVE, 2, True)
+    # frequency_ngrams('data/formatted_text_res.csv', 'data/res/formatted_text_neg_3gram_norm.csv', statistics_functions.commons.Sentiment.NEGATIVE, 3, True)
+    # frequency_ngrams('data/formatted_text_res.csv', 'data/res/formatted_text_neu_2gram_norm.csv', statistics_functions.commons.Sentiment.NEUTRAL, 2, True)
+    # frequency_ngrams('data/formatted_text_res.csv', 'data/res/formatted_text_neu_3gram_norm.csv', statistics_functions.commons.Sentiment.NEUTRAL, 3, True)
     
-    make_statistics('data/logical_parts_res.csv', 'data/res/logical_parts_pos_2gram_norm.csv', statistics_functions.commons.Sentiment.POSITIVE, 2, True)
-    make_statistics('data/logical_parts_res.csv', 'data/res/logical_parts_pos_3gram_norm.csv', statistics_functions.commons.Sentiment.POSITIVE, 3, True)
-    make_statistics('data/logical_parts_res.csv', 'data/res/logical_parts_neg_2gram_norm.csv', statistics_functions.commons.Sentiment.NEGATIVE, 2, True)
-    make_statistics('data/logical_parts_res.csv', 'data/res/logical_parts_neg_3gram_norm.csv', statistics_functions.commons.Sentiment.NEGATIVE, 3, True)
-    make_statistics('data/logical_parts_res.csv', 'data/res/logical_parts_neu_2gram_norm.csv', statistics_functions.commons.Sentiment.NEUTRAL, 2, True)
-    make_statistics('data/logical_parts_res.csv', 'data/res/logical_parts_neu_3gram_norm.csv', statistics_functions.commons.Sentiment.NEUTRAL, 3, True)
+    # frequency_ngrams('data/logical_parts_res.csv', 'data/res/logical_parts_pos_2gram_norm.csv', statistics_functions.commons.Sentiment.POSITIVE, 2, True)
+    # frequency_ngrams('data/logical_parts_res.csv', 'data/res/logical_parts_pos_3gram_norm.csv', statistics_functions.commons.Sentiment.POSITIVE, 3, True)
+    # frequency_ngrams('data/logical_parts_res.csv', 'data/res/logical_parts_neg_2gram_norm.csv', statistics_functions.commons.Sentiment.NEGATIVE, 2, True)
+    # frequency_ngrams('data/logical_parts_res.csv', 'data/res/logical_parts_neg_3gram_norm.csv', statistics_functions.commons.Sentiment.NEGATIVE, 3, True)
+    # frequency_ngrams('data/logical_parts_res.csv', 'data/res/logical_parts_neu_2gram_norm.csv', statistics_functions.commons.Sentiment.NEUTRAL, 2, True)
+    # frequency_ngrams('data/logical_parts_res.csv', 'data/res/logical_parts_neu_3gram_norm.csv', statistics_functions.commons.Sentiment.NEUTRAL, 3, True)
     
+    frequency_ngrams('data/formatted_text_res.csv', 'data/save.csv', statistics_functions.commons.Sentiment.POSITIVE, 3, True)
     
     

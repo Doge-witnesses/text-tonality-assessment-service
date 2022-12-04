@@ -88,7 +88,7 @@ def get_neu_processed_texts(dataset: commons._Dataset_processed_texts) -> common
     return commons._Dataset_processed_texts(res)
 
 
-def frequency_str(words: list[str]) -> list[tuple[str, int]]:
+def frequency_str(ngrams: list[str]) -> list[tuple[str, int]]:
     """
         Computing frequency of words in a list
         
@@ -97,12 +97,12 @@ def frequency_str(words: list[str]) -> list[tuple[str, int]]:
     
     frequency = {}
     
-    for word in words:
+    for ngram in ngrams:
         
-        if frequency.get(word, None):
-            frequency[word] += 1
+        if frequency.get(ngram, None):
+            frequency[ngram] += 1
         else:
-            frequency[word] = 1
+            frequency[ngram] = 1
                 
     frequency = sorted(frequency.items(), key=lambda x: x[1], reverse=True)
         
@@ -125,7 +125,7 @@ def get_ngram(dataset_processed_texts: commons._Dataset_processed_texts, n: int 
 
 def get_norm_ngram(dataset_processed_texts: commons._Dataset_processed_texts, n: int = 1) -> tuple[list[str], dict[str, str]]:
     """
-       Getting n_grams from a processed dataset of texts
+       Getting and normalizing n_grams from a processed dataset of texts
     """
     
     res = []
@@ -134,7 +134,7 @@ def get_norm_ngram(dataset_processed_texts: commons._Dataset_processed_texts, n:
     for processed_text in dataset_processed_texts.processed_texts:
         for i in range(len(processed_text.object_review) - n + 1):
             string = ' '.join(processed_text.object_review[i:i + n])
-            res.append(text_normalization(string))
+            res.append(' '.join(sorted(text_normalization(string).split())))
             dictionary[res[-1]] = string
             
     return res, dictionary
