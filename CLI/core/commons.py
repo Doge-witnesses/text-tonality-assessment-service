@@ -27,3 +27,12 @@ class _Dataset_processed_texts(object):
     def __init__(self, processed_texts: list[_Processed_text]):
         
         self.processed_texts = processed_texts
+        
+    def unwrappe(self) -> list[tuple[str, str, list[str]]]:
+        
+        res = []
+        
+        for processed_text in self.processed_texts:
+            res.append((processed_text.text, processed_text.sentiment.name, processed_text.object_review))
+            
+        return res
