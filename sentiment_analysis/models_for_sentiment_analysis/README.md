@@ -27,9 +27,9 @@ Sentence RuBERT (русский, 12-слойный, 768-размер скрыт�
 
               precision    recall  f1-score   support
 
-           0       0.66      0.69      0.67      5338
-           1       0.92      0.86      0.89      5375
-           2       0.75      0.75      0.75      5387
+     Neutral       0.66      0.69      0.67      5338
+    Positive       0.92      0.86      0.89      5375
+    Negative       0.75      0.75      0.75      5387
     accuracy                           0.77     16100
 
 ## №3 xlm-roberta-base
@@ -41,9 +41,9 @@ Sentence RuBERT (русский, 12-слойный, 768-размер скрыт�
 
               precision    recall  f1-score   support
 
-           0       0.64      0.70      0.67      2730
-           1       0.89      0.84      0.86      2729
-           2       0.74      0.71      0.72      2591
+     Neutral       0.64      0.70      0.67      2730
+    Positive       0.89      0.84      0.86      2729
+    Negative       0.74      0.71      0.72      2591
     accuracy                           0.75      8050
 
 ## №4 Twitter/twhin-bert-base
