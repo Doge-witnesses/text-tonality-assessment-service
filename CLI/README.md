@@ -45,14 +45,14 @@
 
 > В файле `CLI/core/processing_functions.py` доступны следующие функции:
 
-- `processing_text`(text, object_review_size) - Анализ тональности текста
-- `processing_formatted_text`(text, object_review_size) - Форматирование и анализ тональности текста
-- `processing_logical_parts`(text, object_review_size) - Разбиение на логические части, форматирование и анализ тональности текста
-- `processing_dataset`(texts, object_review_size) - Анализ тональности корпуса текстов
-- `processing_formatted_dataset`(texts, object_review_size) - Форматирование и анализ тональности корпуса текстов
-- `processing_logical_parts_dataset`(texts, object_review_size) - Разбиение на логические части, форматирование и анализ тональности корпуса текстов
+- `processing_text`(text, object_review_size) - Обработка текста
+- `processing_formatted_text`(text, object_review_size) - Форматирование и обработка текста
+- `processing_logical_parts`(text, object_review_size) - Разбиение на логические части, форматирование и обработка текста
+- `processing_dataset`(texts, object_review_size) - Обработка корпуса текстов
+- `processing_formatted_dataset`(texts, object_review_size) - Форматирование и обработка корпуса текстов
+- `processing_logical_parts_dataset`(texts, object_review_size) - Разбиение на логические части, форматирование и обработка корпуса текстов
 - `save_dataset`(dataset, output_path) - Сохранение обработанного корпуса текстов
-- `processing_with_buffer_reset`(proc_fun, texts, output_path, object_review_size, buffer_size) - Пакетированный анализ тональности корпуса текстов 
+- `processing_with_buffer_reset`(proc_fun, texts, output_path, object_review_size, buffer_size) - Пакетированная обработка корпуса текстов 
 
 ### Статистические функции
 
