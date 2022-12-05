@@ -71,7 +71,26 @@ if __name__ == '__main__':
     
     texts = pd.read_csv('data/phone.csv').dropna()['text'].to_list()
     
+    texts = texts[896+1792:]
+    
     processing_functions.processing_with_buffer_reset(proc_fun=processing_functions.processing_logical_parts_dataset,
                                                       texts=texts,
                                                       output_path='data/res/phone_log_parts.csv',
                                                       object_review_size=4)
+    
+    # dataset1 = pd.read_csv('data/markup/women_data_with_markup1.csv',).drop('Unnamed: 0', axis=1)
+    # dataset2 = pd.read_csv('data/markup/women_data_with_markup2.csv')
+    # dataset3 = pd.read_csv('data/markup/women_data_with_markup3.csv').drop('Unnamed: 0', axis=1)
+    # dataset4 = pd.read_csv('data/markup/women_data_with_markup4.csv', encoding='Windows 1251')
+    # dataset5 = pd.read_csv('data/markup/women_data_with_markup1.csv').drop('Unnamed: 0', axis=1)
+    
+    # dataset = pd.concat([dataset1, dataset2, dataset3, dataset4, dataset5])
+    
+    # dataset.to_csv('data/markup/women_data_with_markup.csv', index=False)
+    
+    # texts = pd.read_csv('data/markup/women_data_with_markup.csv').dropna()['text'].to_list()
+    
+    # processing_functions.processing_with_buffer_reset(proc_fun=processing_functions.processing_formatted_dataset,
+    #                                                   texts=texts,
+    #                                                   output_path='data/markup/women_data_with_markup_res.csv',
+    #                                                   object_review_size=4)
