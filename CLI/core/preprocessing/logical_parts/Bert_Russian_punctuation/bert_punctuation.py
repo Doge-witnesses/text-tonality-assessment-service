@@ -131,7 +131,7 @@ class Bert_punctuation(object):
                             #print('Союз',choice_list[j-1],choice_list[j])
                             choice_list[j-1] = '[MASK] '+choice_list[j-1]  
                           
-                    elif choice_list[j] !='ни' or (choice_list[j] =='ни' and (j==0 or choice_list[j-1] !='свет')and (j==len(pos) or choice_list[j+1] !='свет')):
+                    elif choice_list[j] !='ни' or (choice_list[j] =='ни' and (j==0 or choice_list[j-1] !='свет')and (j==len(pos) or (j+1 < len(choice_list) and [j+1] !='свет'))):
                         #print('Союз',choice_list[j],choice_list[j-1],choice_list[j+1])
                         for pb in par_b:
                             if (j!=0 and choice_list[j-1] ==pb[0]) and (j!=len(pos) and choice_list[j+1] ==pb[1]):

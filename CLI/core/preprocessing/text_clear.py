@@ -17,6 +17,8 @@ def text_clear(text : str) -> str:
             
     while '  ' in text:
         text = text.replace('  ', ' ')
+    if len(text) == 0:
+        return text
     if text[len(text)-1] == ' ':
         text = text[:len(text)-1]
             
