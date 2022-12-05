@@ -70,7 +70,7 @@ def processing_dataset(texts : list[str], object_review_size: int = 3) -> common
     """
         Computing of sentiment and object review in dataset
         
-        [texts]              ---- Dataset of texts 
+        [texts] ----------------- Dataset of texts 
         [object_review_size] ---- Number of words in object review
     """
     
@@ -88,7 +88,7 @@ def processing_formatted_dataset(texts : list[str], object_review_size: int = 3)
     """
         Text formatting and computing of sentiment and object review in dataset
         
-        [texts]              ---- Dataset of texts 
+        [texts] ----------------- Dataset of texts 
         [object_review_size] ---- Number of words in object review
     """
     
@@ -106,7 +106,7 @@ def processing_logical_parts_dataset(texts : list[str], object_review_size: int 
     """
         Dividing text into logical parts and computing of sentiment and object review in dataset
         
-        [texts]              ---- Dataset of texts 
+        [texts] ----------------- Dataset of texts 
         [object_review_size] ---- Number of words in object review
     """
     
@@ -125,7 +125,7 @@ def save_dataset(dataset: commons._Dataset_processed_texts, output_path: str) ->
     """
         Saving a dataset of processed texts
         
-        [dataset]     ---- Processed texts
+        [dataset] -------- Processed texts
         [output_path] ---- Save path
     """
     
@@ -133,15 +133,16 @@ def save_dataset(dataset: commons._Dataset_processed_texts, output_path: str) ->
     
     df.to_csv(output_path)
     
-def processing_with_buffer_reset(proc_fun, texts : list[str], output_path: str, object_review_size: int = 3, buffer_size: int = 128) -> commons._Dataset_processed_texts:
+    
+def processing_with_buffer_reset(proc_fun, texts : list[str], output_path: str, object_review_size: int = 3, buffer_size: int = 128) -> None:
     """
         Processing and saving texts in packages
         
-        [proc_fun]           ---- Processing function
-        [texts]              ---- Dataset of texts 
-        [output_path]        ---- Save path
+        [proc_fun] -------------- Processing function
+        [texts] ----------------- Dataset of texts 
+        [output_path] ----------- Save path
         [object_review_size] ---- Number of words in object review
-        [buffer_size]        ---- Package size
+        [buffer_size] ----------- Package size
     """
     
     pd.DataFrame(columns=['Text', 'Sentiment', 'Object_review']).to_csv(output_path, index=False)
