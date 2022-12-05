@@ -14,9 +14,12 @@ RuBERT (русский, 12-слойный, 768-размер скрытого с�
 
 ### Результаты:
 
-    Accuracy 0.68
-    Precision 0.67, recall 0.68, F1 0.67
-    Validation took: 0:00:53
+              precision    recall  f1-score   support
+
+     Neutral       0.64      0.71      0.67      5000
+    Positive       0.92      0.86      0.89      5427
+    Negative       0.76      0.74      0.75      5218
+    accuracy                           0.77     15645
 
 ## №2 DeepPavlov/rubert-base-cased-sentence
 К данной модели был добавлен полносвязный слой.
