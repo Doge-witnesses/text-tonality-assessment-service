@@ -7,7 +7,7 @@ else:
     from .core import processing_functions
 
 from enum import Enum
-
+import pandas as pd
 
 class _Preprocessing(Enum):
     
@@ -54,16 +54,24 @@ def text_tonality(preprocessing: _Preprocessing, input_text: str, object_review_
             print('=' * 100, '\n')
             print(f'\tPART {part_id + 1}: \"{text}\"\n\tSENTIMENT: {sentiment}\n\tOBJECT: {object_review}\n')
             print('=' * 100)
-    
+
+
 if __name__ == '__main__':
     
-    text = 'Товар так и не пришёл ((( продавец не вернул деньги (((	'
+    # text = 'Товар так и не пришёл ((( продавец не вернул деньги (((	'
     
-    text_tonality(input_text=text, 
-                  preprocessing=_Preprocessing.WITHOUT_PREPROCESSING)
+    # text_tonality(input_text=text, 
+    #               preprocessing=_Preprocessing.WITHOUT_PREPROCESSING)
     
-    text_tonality(input_text=text, 
-                  preprocessing=_Preprocessing.TEXT_FORMATTING)
+    # text_tonality(input_text=text, 
+    #               preprocessing=_Preprocessing.TEXT_FORMATTING)
     
-    text_tonality(input_text=text, 
-                  preprocessing=_Preprocessing.LOGICAL_PARTS, object_review_size=3)
+    # text_tonality(input_text=text, 
+    #               preprocessing=_Preprocessing.LOGICAL_PARTS, object_review_size=3)
+    
+    texts = pd.read_csv('data/phone.csv').dropna()['text'].to_list()
+    
+    processing_functions.processing_with_buffer_reset(proc_fun=processing_functions.processing_logical_parts_dataset,
+                                                      texts=texts,
+                                                      output_path='data/res/phone_log_parts.csv',
+                                                      object_review_size=4)

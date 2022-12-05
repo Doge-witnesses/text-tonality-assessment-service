@@ -48,10 +48,11 @@
 - `processing_text`(text, object_review_size) - Анализ тональности текста
 - `processing_formatted_text`(text, object_review_size) - Форматирование и анализ тональности текста
 - `processing_logical_parts`(text, object_review_size) - Разбиение на логические части, форматирование и анализ тональности текста
-- `processing_dataset`(input_path, size, object_review_size) - Анализ тональности корпуса текстов
-- `processing_formatted_dataset`(input_path, size, object_review_size) - Форматирование и анализ тональности корпуса текстов
-- `processing_logical_parts_dataset`(input_path, size, object_review_size) - Разбиение на логические части, форматирование и анализ тональности корпуса текстов
+- `processing_dataset`(texts, object_review_size) - Анализ тональности корпуса текстов
+- `processing_formatted_dataset`(texts, object_review_size) - Форматирование и анализ тональности корпуса текстов
+- `processing_logical_parts_dataset`(texts, object_review_size) - Разбиение на логические части, форматирование и анализ тональности корпуса текстов
 - `save_dataset`(dataset, output_path) - Сохранение обработанного корпуса текстов
+- `processing_with_buffer_reset`(proc_fun, texts, output_path, object_review_size, buffer_size) - Пакетированный анализ тональности корпуса текстов 
 
 ### Статистические функции
 

@@ -2,7 +2,7 @@ if __name__ == '__main__':
     
     from object_review_models.compression.compressor import compress
     from sentiment_analysis_models.predictor import predict
-    from preprocessing.preprocessing import preprocessing
+    from preprocessing import preprocessing
     from preprocessing.text_clear import text_clear
     import commons
 
@@ -10,7 +10,7 @@ else:
     
     from .object_review_models.compression.compressor import compress
     from .sentiment_analysis_models.predictor import predict
-    from .preprocessing.preprocessing import preprocessing
+    from .preprocessing import preprocessing
     from .preprocessing.text_clear import text_clear
     from . import commons
     
@@ -52,7 +52,11 @@ def processing_logical_parts(text: str, object_review_size: int = 3) -> commons.
         [object_review_size] ---- Number of words in object review
     """
     
-    logical_parts = preprocessing(text)
+    if len(text) < 100:
+        logical_parts = preprocessing.preprocessing2(text)
+    else:
+        logical_parts = preprocessing.preprocessing1(text)
+        
     processed_parts = []
     
     for part in logical_parts:
@@ -62,81 +66,57 @@ def processing_logical_parts(text: str, object_review_size: int = 3) -> commons.
     return commons._Dataset_processed_texts(processed_parts)
 
 
-def processing_dataset(input_path: str, size: int = 0, object_review_size: int = 3) -> commons._Dataset_processed_texts:
+def processing_dataset(texts : list[str], object_review_size: int = 3) -> commons._Dataset_processed_texts:
     """
         Computing of sentiment and object review in dataset
         
-        [input_path] ------------ Path to dataset (.csv file [..., text, ...])
-        [size] ------------------ Number of texts from the dataset 
+        [texts]              ---- Dataset of texts 
         [object_review_size] ---- Number of words in object review
     """
     
-    df = pd.read_csv(input_path, lineterminator='\n')
-    texts = ''
-    
-    if (size > 0):
-        texts = df['text'].head(size).to_list()
-    else:
-        texts = df['text'].to_list()
-        
-    res = list[commons._Processed_text]
+    res = []
     
     for text in texts:
         
-        res.append(processing_text(text))
+        res.append(processing_text(text, object_review_size))
+        
         
     return commons._Dataset_processed_texts(res)
 
 
-def processing_formatted_dataset(input_path: str, size: int = 0, object_review_size: int = 3) -> commons._Dataset_processed_texts:
+def processing_formatted_dataset(texts : list[str], object_review_size: int = 3) -> commons._Dataset_processed_texts:
     """
         Text formatting and computing of sentiment and object review in dataset
         
-        [input_path] ------------ Path to dataset (.csv file [..., text, ...])
-        [size] ------------------ Number of texts from the dataset 
+        [texts]              ---- Dataset of texts 
         [object_review_size] ---- Number of words in object review
     """
     
-    df = pd.read_csv(input_path, lineterminator='\n')
-    texts = ''
-    
-    if (size > 0):
-        texts = df['text'].head(size).to_list()
-    else:
-        texts = df['text'].to_list()
-        
-    res = list[commons._Processed_text]
+    res = []
     
     for text in texts:
         
-        res.append(processing_formatted_text(text))
+        res.append(processing_formatted_text(text, object_review_size))
+        
         
     return commons._Dataset_processed_texts(res)
 
 
-def processing_logical_parts_dataset(input_path: str, size: int = 0, object_review_size: int = 3) -> commons._Dataset_processed_texts:
+def processing_logical_parts_dataset(texts : list[str], object_review_size: int = 3) -> commons._Dataset_processed_texts:
     """
         Dividing text into logical parts and computing of sentiment and object review in dataset
         
-        [input_path] ------------ Path to dataset (.csv file [..., text, ...])
-        [size] ------------------ Number of texts from the dataset 
+        [texts]              ---- Dataset of texts 
         [object_review_size] ---- Number of words in object review
     """
     
-    df = pd.read_csv(input_path, lineterminator='\n')
-    texts = ''
-    
-    if (size > 0):
-        texts = df['text'].head(size).to_list()
-    else:
-        texts = df['text'].to_list()
-        
-    res = list[commons._Processed_text]
+    res = []
     
     for text in texts:
-        for processed_part in processing_logical_parts(text):
+        for processed_part in processing_logical_parts(text, object_review_size).processed_texts:
             
             res.append(processed_part)
+        
         
     return commons._Dataset_processed_texts(res)
     
@@ -152,3 +132,24 @@ def save_dataset(dataset: commons._Dataset_processed_texts, output_path: str) ->
     df = pd.DataFrame(dataset.unwrappe(), columns=['Text', 'Sentiment', 'Object_review'])
     
     df.to_csv(output_path)
+    
+def processing_with_buffer_reset(proc_fun, texts : list[str], output_path: str, object_review_size: int = 3, buffer_size: int = 128) -> commons._Dataset_processed_texts:
+    """
+        Processing and saving texts in packages
+        
+        [proc_fun]           ---- Processing function
+        [texts]              ---- Dataset of texts 
+        [output_path]        ---- Save path
+        [object_review_size] ---- Number of words in object review
+        [buffer_size]        ---- Package size
+    """
+    
+    pd.DataFrame(columns=['Text', 'Sentiment', 'Object_review']).to_csv(output_path, index=False)
+    
+    for i in range((len(texts) + buffer_size - 1)//buffer_size):
+        
+        df = pd.DataFrame(proc_fun(texts[i*buffer_size:min((i+1)*buffer_size, len(texts))], object_review_size).unwrappe(), columns=['Text', 'Sentiment', 'Object_review'])
+        
+        df.to_csv(output_path, mode='a', index=False, header=False)
+        
+        print('Text: ', min((i + 1) * buffer_size, len(texts)))

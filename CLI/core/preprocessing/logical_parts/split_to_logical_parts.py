@@ -24,4 +24,7 @@ logicalParts = LogicalParts()
 
 def split_to_logical_parts(text: str) -> list[str]:
     
+    if len(text) > 500:
+        text = text[:500]
+    
     return logicalParts.transform(text)
