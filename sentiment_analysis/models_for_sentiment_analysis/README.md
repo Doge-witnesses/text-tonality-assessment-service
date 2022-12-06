@@ -102,34 +102,35 @@ TwHIN-BERT — это новая многоязычная языковая мо�
 
               precision    recall  f1-score   support
 
-           0       0.25      0.24      0.25      1954
-           1       0.74      0.37      0.49      1894
-           2       0.52      0.79      0.63      2005
-    accuracy                           0.47      5853
+     Neutral       0.59      0.62      0.61      1378
+    Positive       0.72      0.73      0.73      1426
+    Negative       0.87      0.83      0.85      1383
+    accuracy                           0.73      4187
 
 ### На корпусе phone:
 
               precision    recall  f1-score   support
 
-           0       0.25      0.24      0.25      1954
-           1       0.74      0.37      0.49      1894
-           2       0.52      0.79      0.63      2005
-    accuracy                           0.47      5853
+     Neutral       0.57      0.59      0.58      1377
+    Positive       0.68      0.71      0.70      1407
+    Negative       0.78      0.73      0.76      1403
+    accuracy                           0.68      4187
+
 
 ### На корпусе women:
 
               precision    recall  f1-score   support
 
-           0       0.60      0.68      0.64      5000
-           1       0.92      0.83      0.87      5427
-           2       0.74      0.72      0.73      5218
-    accuracy                           0.75     15645
+     Neutral       0.64      0.66      0.65      1418
+    Positive       0.90      0.85      0.87      1372
+    Negative       0.72      0.73      0.72      1397
+    accuracy                           0.75      4187
 
 ### На корпусе reviews:
 
               precision    recall  f1-score   support
 
-           0       0.75      0.80      0.78      1414
-           1       0.93      0.82      0.87      1356
-           2       0.86      0.89      0.87      1416
-    accuracy                           0.84      4186
+     Neutral       0.64      0.63      0.64      1441
+    Positive       0.79      0.82      0.81      1334
+    Negative       0.79      0.76      0.77      1412
+    accuracy                           0.74      4187
