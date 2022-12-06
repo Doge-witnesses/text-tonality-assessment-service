@@ -92,10 +92,10 @@ TwHIN-BERT — это новая многоязычная языковая мо�
 
               precision    recall  f1-score   support
 
-     Neutral       0.75      0.72      0.74      7189
-    Positive       0.82      0.88      0.85      6664
-    Negative       0.87      0.84      0.85      7078
-    accuracy                           0.81     20931
+      Neutral       0.61      0.63      0.62      5614
+     Positive       0.77      0.78      0.77      5539
+     Negative       0.79      0.76      0.77      5595
+     accuracy                           0.72     16748
 
     
 ### На корпусе hotel:
