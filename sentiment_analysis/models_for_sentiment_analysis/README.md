@@ -2,11 +2,11 @@
 ## Для оценки разметки данных и оценки тональности использовались 4 модели. Первые 3 модели были обучены и протестированы на корпусе women_with_predict.
 ### Описание корпуса women_with_predict:
 
-Формат csv
-Объем корпуса 90001
-Столбцы : review, sentiment (positive, negative, neutral)
-Примерная длина отзыва 20 слов
-Распределение признаков (0 - neutral, 1 - positive, 2 - negative)
+    Формат csv
+    Объем корпуса 90001
+    Столбцы : review, sentiment (positive, negative, neutral)
+    Примерная длина отзыва 20 слов
+    Распределение признаков (0 - neutral, 1 - positive, 2 - negative)
 
 
 # Модели:
