@@ -26,17 +26,17 @@ def get_processed_texts(path: str) -> commons._Dataset_processed_texts:
     
     for processed_texts in df:
         
-        text = processed_texts[1]
+        text = processed_texts[0]
         sentiment = None
         
-        if processed_texts[2] == 'NEGATIVE':
+        if processed_texts[1] == 'NEGATIVE':
             sentiment = commons.Sentiment.NEGATIVE
-        elif processed_texts[2] == 'NEUTRAL':
+        elif processed_texts[1] == 'NEUTRAL':
             sentiment = commons.Sentiment.NEUTRAL
-        elif processed_texts[2] == 'POSITIVE':
+        elif processed_texts[1] == 'POSITIVE':
             sentiment = commons.Sentiment.POSITIVE
         
-        object_review = text_clear(processed_texts[3]).split()
+        object_review = text_clear(processed_texts[2]).split()
         
         if (text == None or sentiment == None or object_review == None):
             continue

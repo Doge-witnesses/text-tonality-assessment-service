@@ -58,25 +58,25 @@ def text_tonality(preprocessing: _Preprocessing, input_text: str, object_review_
 
 if __name__ == '__main__':
     
-    # text = 'Товар так и не пришёл ((( продавец не вернул деньги (((	'
+    text = 'К сожалению,   заказ не отслеживается. Пропал... очень обидно... обратная связь с продавцом хорошая 	'
     
-    # text_tonality(input_text=text, 
-    #               preprocessing=_Preprocessing.WITHOUT_PREPROCESSING)
+    text_tonality(input_text=text, 
+                  preprocessing=_Preprocessing.WITHOUT_PREPROCESSING)
     
-    # text_tonality(input_text=text, 
-    #               preprocessing=_Preprocessing.TEXT_FORMATTING)
+    text_tonality(input_text=text, 
+                  preprocessing=_Preprocessing.TEXT_FORMATTING)
     
-    # text_tonality(input_text=text, 
-    #               preprocessing=_Preprocessing.LOGICAL_PARTS, object_review_size=3)
+    text_tonality(input_text=text, 
+                  preprocessing=_Preprocessing.LOGICAL_PARTS, object_review_size=3)
     
-    texts = pd.read_csv('data/phone.csv').dropna()['text'].to_list()
+    # texts = pd.read_csv('data/phone.csv').dropna()['text'].to_list()
     
-    texts = texts[896+1792:]
+    # texts = texts[896+1792+21504:]
     
-    processing_functions.processing_with_buffer_reset(proc_fun=processing_functions.processing_logical_parts_dataset,
-                                                      texts=texts,
-                                                      output_path='data/res/phone_log_parts.csv',
-                                                      object_review_size=4)
+    # processing_functions.processing_with_buffer_reset(proc_fun=processing_functions.processing_logical_parts_dataset,
+    #                                                   texts=texts,
+    #                                                   output_path='data/res/phone_log_parts.csv',
+    #                                                   object_review_size=4)
     
     # dataset1 = pd.read_csv('data/markup/women_data_with_markup1.csv',).drop('Unnamed: 0', axis=1)
     # dataset2 = pd.read_csv('data/markup/women_data_with_markup2.csv')
@@ -94,3 +94,4 @@ if __name__ == '__main__':
     #                                                   texts=texts,
     #                                                   output_path='data/markup/women_data_with_markup_res.csv',
     #                                                   object_review_size=4)
+    

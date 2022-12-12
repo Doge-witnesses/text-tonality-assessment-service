@@ -32,6 +32,15 @@ def preprocessing2(text: str) -> list[str]:
     return log_parts
 
 
+def preprocessing3(text: str) -> list[str]:
+    """
+        ...
+    """
+    log_parts = split_to_logical_parts(text)
+    
+    return log_parts
+    
+
 if __name__ == '__main__':
     # TEST
 

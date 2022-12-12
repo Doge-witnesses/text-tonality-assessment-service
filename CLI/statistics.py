@@ -69,6 +69,10 @@ if __name__ == '__main__':
     # frequency_ngrams('data/logical_parts_res.csv', 'data/res/logical_parts_neu_2gram_norm.csv', statistics_functions.commons.Sentiment.NEUTRAL, 2, True)
     # frequency_ngrams('data/logical_parts_res.csv', 'data/res/logical_parts_neu_3gram_norm.csv', statistics_functions.commons.Sentiment.NEUTRAL, 3, True)
     
-    frequency_ngrams('data/formatted_text_res.csv', 'data/save.csv', statistics_functions.commons.Sentiment.POSITIVE, 3, True)
+    frequency_ngrams(input_path='data/res/phone_log_parts.csv',
+                     output_path='data/res/phone_log_parts_res_3ngram_all.csv',
+                     sentiment=None,
+                     n=3,
+                     normalization=True)
     
     
