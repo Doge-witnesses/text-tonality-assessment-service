@@ -8,7 +8,7 @@ def get_rubert_base_cased_model():
                                                       output_attentions = False,
                                                       output_hidden_states = False)
     
-    model.load_state_dict(torch.load('CLI/core/sentiment_analysis_models/rubert_base_cased/model_data/model.pth',map_location=torch.device('cpu')))
+    model.load_state_dict(torch.load('core/sentiment_analysis_models/rubert_base_cased/model_data/model.pth'))
     model.eval()
     return model
     
@@ -24,7 +24,7 @@ def save_tokenizer(tokenizer, path):
     
 def get_rubert_base_cased():
     
-    save_model(get_rubert_base_cased_model(), 'CLI/core/sentiment_analysis_models/rubert_base_cased/model_data/model')
-    save_tokenizer(get_rubert_base_cased_tokenizer(), 'CLI/core/sentiment_analysis_models/rubert_base_cased/model_data/tokenizer')
+    save_model(get_rubert_base_cased_model(), 'core/sentiment_analysis_models/rubert_base_cased/model_data/model')
+    save_tokenizer(get_rubert_base_cased_tokenizer(), 'core/sentiment_analysis_models/rubert_base_cased/model_data/tokenizer')
 
  

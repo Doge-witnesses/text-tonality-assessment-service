@@ -12,4 +12,9 @@ def compress(text: str, num_words: int = 0, compressor = rubert_tiny2_compress) 
     if (num_words == 0):
         return compressor(text)
     
-    return compressor(text, keep_ratio=min(0.999999999, (num_words + 1)/(len(text.split()) + 1)))
+    coef = (num_words + 1)/len(text.split())
+    
+    if coef >= 1:
+        return text
+    
+    return compressor(text, keep_ratio=coef)

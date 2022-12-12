@@ -16,7 +16,7 @@ def _save_tokenizer(tokenizer, path):
     
 def get_rubert_tiny2_sentence_compression() -> None:
     
-    _save_model(_get_rubert_tiny2_sentence_compression_model(), 'CLI/core/object_review_models/compression/model_rubert_tiny2_sentence_compression/model_data/model')
-    _save_tokenizer(_get_rubert_tiny2_sentence_compression_tokenizer(), 'CLI/core/object_review_models/compression/model_rubert_tiny2_sentence_compression/model_data/tokenizer')
+    _save_model(_get_rubert_tiny2_sentence_compression_model(), 'core/object_review_models/compression/model_rubert_tiny2_sentence_compression/model_data/model')
+    _save_tokenizer(_get_rubert_tiny2_sentence_compression_tokenizer(), 'core/object_review_models/compression/model_rubert_tiny2_sentence_compression/model_data/tokenizer')
 
  

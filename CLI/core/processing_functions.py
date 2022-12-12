@@ -52,10 +52,7 @@ def processing_logical_parts(text: str, object_review_size: int = 3) -> commons.
         [object_review_size] ---- Number of words in object review
     """
     
-    if len(text) < 100:
-        logical_parts = preprocessing.preprocessing2(text)
-    else:
-        logical_parts = preprocessing.preprocessing1(text)
+    logical_parts = preprocessing.preprocessing2(text)
         
     processed_parts = []
     

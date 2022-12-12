@@ -15,6 +15,8 @@ def preprocessing1(text: str) -> list[str]:
     
     log_parts = split_to_logical_parts(text)
     
+    print(log_parts)
+    
     for part_id in range(len(log_parts)):
         log_parts[part_id] = text_clear(log_parts[part_id])
     

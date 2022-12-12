@@ -1,8 +1,8 @@
 import torch
 from transformers import BertForSequenceClassification, BertTokenizer
 
-rubert_base_cased_model = BertForSequenceClassification.from_pretrained('CLI/core/sentiment_analysis_models/rubert_base_cased/model_data/model')
-rubert_base_cased_tokenizer = BertTokenizer.from_pretrained('CLI/core/sentiment_analysis_models/rubert_base_cased/model_data/tokenizer')
+rubert_base_cased_model = BertForSequenceClassification.from_pretrained('core/sentiment_analysis_models/rubert_base_cased/model_data/model')
+rubert_base_cased_tokenizer = BertTokenizer.from_pretrained('core/sentiment_analysis_models/rubert_base_cased/model_data/tokenizer')
 
 def rubert_base_cased_predict(text):
     # (str) -> int
