@@ -10,7 +10,7 @@
 - Пишем команду в директории проекта для создания виртуального окружения:
 
     ```
-    python -m venv venv
+    python3 -m venv venv 
     ```
 
 - Активируем виртуальное окружение:
@@ -34,7 +34,7 @@
 
 - Скачиваем [model.pth](https://drive.google.com/file/d/1k-Bp7Obr7mPVdikzyYSkNwkJPYle-fyH/view?usp=share_link), переносим файл в `CLI/core/sentiment_analysis_models/rubert_base_cased/model_data/`
 
-- Запускаем скрипт `CLI/model_getter.py`
+- Запускаем скрипт `CLI/core/model_getter.py`
 
 - Пишем команду:
     ```

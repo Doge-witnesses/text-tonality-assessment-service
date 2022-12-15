@@ -8,7 +8,7 @@ def get_rubert_base_cased_model():
                                                       output_attentions = False,
                                                       output_hidden_states = False)
     
-    model.load_state_dict(torch.load('core/sentiment_analysis_models/rubert_base_cased/model_data/model.pth'))
+    model.load_state_dict(torch.load('core/sentiment_analysis_models/rubert_base_cased/model_data/model.pth', map_location=torch.device('cpu')))
     model.eval()
     return model
     
