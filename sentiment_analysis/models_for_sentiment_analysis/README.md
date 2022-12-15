@@ -33,10 +33,10 @@ Sentence RuBERT (русский, 12-слойный, 768-размер скрыт�
 
               precision    recall  f1-score   support
 
-     Neutral       0.66      0.69      0.67      5338
-    Positive       0.92      0.86      0.89      5375
-    Negative       0.75      0.75      0.75      5387
-    accuracy                           0.77     16100
+     Neutral       0.57      0.54      0.55      5182
+    Positive       0.77      0.79      0.78      5237
+    Negative       0.67      0.69      0.68      5227
+    accuracy                           0.67     15646
 
 ## №3 xlm-roberta-base
 
