@@ -8,6 +8,7 @@ def help():
             - processing_text
             - processing_formatted_text
             - processing_logPart
+            - help
     """)
     
 if __name__ == "__main__":

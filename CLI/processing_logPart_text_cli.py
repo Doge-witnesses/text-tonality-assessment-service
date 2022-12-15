@@ -4,7 +4,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import click
 
 @click.command()
-@click.option('-ORS', type=int, default=3, show_default=True, help="""Number of words in object review""")
+@click.option('-ORS', type=int, default=0, show_default=True, help="""Number of words in object review""")
 @click.argument('text', type = click.STRING)
 def processing(ors, text):
     from core import processing_functions

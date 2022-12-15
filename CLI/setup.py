@@ -11,7 +11,7 @@ setup(
         'console_scripts': [
             'processing_text=processing_text_cli:processing',
             'processing_formatted_text=processing_formatted_text_cli:processing',
-            'processing_logPart_text=processing_logPart_text_cli:processing',
+            'processing_logPart=processing_logPart_text_cli:processing',
             'help=help_cli:help',
         ],
     },
