@@ -69,7 +69,7 @@
 processing_logPart -ORS=3 "Доставили быстро,   качество ужасное!	"
 ```
 ```
-processing_formatted_text -help
+processing_formatted_text --help
 ```
 
 ## Описание функций
